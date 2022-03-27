@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Blank template</title>
+
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+    <body>
+        <h1>Задание 1:</h1>
+        <form>
+            
+            <label>Введите градусы по Цельсию <input type="number" class="input" placeholder="Градусы"></label>
+            <button type="button" class="btn">Перевести</button>
+        </form>
+        <p>По Фаренгейту: <span id="output" style="color: red;"></span></p>
+        
+        <h1>Задание 2:</h1>
+
+        <p>Переменная admin: <span class="temp" style="color: red;"></span></p>
+        
+        <h1>Задание 3:</h1>
+        <p style="color: green;">Ипользую eval, если есть более безопастный способ перевести сроку в нужные значения, буду крайне признателен за подсказку! </p>
+
+        <p>Результат выражения <span class="expression">10 + 10 + "10"</span> (Сначала сложение, затем конкатинация): <span class="sum" style="color: red;"></span></p>
+        <p>Результат выражения <span class="expression">10 + "10" + 10</span> (Конкатинация): <span class="sum" style="color: red;"></span></p>
+        <p>Результат выражения <span class="expression">10 + 10 + +"10"</span> (Сначала сложение, преобразование унарным плюсом в число и сложение): <span class="sum" style="color: red;"></span></p>
+        <p>Результат выражения <span class="expression">10 / -""</span> (Как я понял тут преобразование пустой строки в число, что приводит к словной бесконечности, но это не точно ): <span class="sum" style="color: red;"></span></p>
+        <p>Результат выражения <span class="expression">10 / +"2,5"</span> (Не совсем понял, почему если просто разделить на 2,5 получится 5, а когда через унарный плюс пишет что не число): <span class="sum" style="color: red;"></span></p>    
+        
+        <h1>Задание 4:</h1>
+        <form>
+            
+            <label>Введите число: <input type="number" class="inputNumber" placeholder="число"></label>
+            <button type="button" class="btnNumber">Перевести</button>
+        </form>
+        <p>Разряды числа: <span id="outputNumber" style="color: red;"></span></p>
+    </body>
+    
+    <script>
+        "use strict";
+        /* 
+            ------------ Первое задание
+        */
+        let    input = document.querySelector('.input'),
+               btn = document.querySelector('.btn'),
+               output = document.getElementById('output');
+        
+        btn.addEventListener('click', e => {
+            output.innerHTML = ((9 / 5) * input.value + 32).toFixed(2);
+        })
+
+        /* 
+            ------------- Второе задание
+        */
+        let temp = document.querySelector('.temp');
+
+        let name = 'Василий';
+        let admin = name;
+
+        temp.innerHTML = admin;
+        
+        /* 
+            ------------- Третье задание
+        */
+        let sum = document.querySelectorAll('.sum'),
+            expression = document.querySelectorAll('.expression');
+
+        for(let i = 0; i < expression.length; i++) {
+            console.log(expression[i].innerHTML)
+            sum[i].innerHTML = eval(expression[i].innerHTML)
+        }
+
+        /* 
+            ------------- Четвертое задание
+        */
+        let    inputNumber = document.querySelector('.inputNumber'),
+               outputNumber = document.querySelector('#outputNumber'),
+               btnNumber = document.querySelector('.btnNumber');
+
+            const changeArr = (num) => {
+                if(inputNumber.value.split('').reverse().join(',')[num] == undefined) {
+                    return 0;
+                } else {
+                    return inputNumber.value.split('').reverse().join(',')[num];
+                }
+            };
+
+            btnNumber.addEventListener('click', e => {
+                for(let i = 0; i < inputNumber.value.split('').length; i++) {
+                   outputNumber.innerHTML = 
+                   "В числе " + inputNumber.value + 
+                   " количество сотен: " + changeArr(4) + 
+                   ", десятков: " + changeArr(2) +
+                   ", единиц: " + changeArr(0);
+                }
+            })
+    </script>
+</html>
