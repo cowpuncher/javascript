@@ -74,13 +74,14 @@
   /*
   6. Добавьте атрибут data-dd со значением 3 элементу у которого существует
   атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
-   */
-
-
+   */  
+  const dataDD = document.querySelector('[aria-labelledby="dropdownMenuButton"]');
+  dataDD.dataset.dd = 3;
   /*
   7. Удалите атрибут type у элемента с классом "dropdown-toggle".
-   */
-
+   */  
+   const dropdownToggle = document.querySelector('.dropdown-toggle');
+   dropdownToggle.removeAttribute('type');
 
   /*
   8. Выведите в консоль все имеющиеся атрибуты и их значения тега у которого
@@ -88,7 +89,16 @@
   Вывод каждого атрибута и значений должен выглядеть следующим образом (пример):
   Атрибут "class" содержит значение "btn btn-secondary dropdown-toggle"
    */
+  const outputText = () => {
+    return `
+      Атрибут "class" содержит значение "${dropdownToggle.className}"
+      Атрибут "id" содержит значение "${dropdownToggle.dataset.toggle}"
+      Атрибут "aria-haspopup" содержит значение "${dropdownToggle.getAttribute('aria-haspopup')}"
+      Атрибут "aria-expanded" содержит значение "${dropdownToggle.getAttribute('aria-expanded')}"
+    `;
+  }
 
+  console.log(outputText());
 
 </script>
 </body>
