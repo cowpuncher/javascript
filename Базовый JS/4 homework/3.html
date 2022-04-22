@@ -31,6 +31,18 @@
 <script>
   "use strict";
 
+  const getDigitsOfNumber = (number) => {
+    let objNumber = {}
+    if(!Number(number) || number > 1000) {
+      console.error('Вы ввели число больше 1000 или текст');
+    } else {
+      objNumber.units = Math.floor(number % 10);
+      objNumber.dozens = Math.floor(number / 10) % 10;
+      objNumber.hundreds = Math.floor(number / 100);
+      console.log(objNumber);
+    }
+  }
+  getDigitsOfNumber(987);
   // Здесь пишем решение, данный комментарий необходимо стереть.
 </script>
 </body>

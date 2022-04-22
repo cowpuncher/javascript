@@ -20,6 +20,34 @@
 <script>
   "use strict";
 
+  function ProductES5 (name, price) {
+    this.name = name;
+    this.price = price;
+  }
+
+  ProductES5.prototype.make25Discount = function() {
+    return this.price *= 0.75;
+  };
+
+  const product1 = new ProductES5('Вилы', 1000);
+
+  console.log(`Название: ${product1.name} \nСтарая цена: ${product1.price} \nНовая цена: ${product1.make25Discount()}`);
+
+
+  class ProductES6 {
+    constructor(name, price) {
+      this.name = name;
+      this.price = price;
+    }
+    make25Discount () {
+      return this.price - this.price * 0.25;
+    }
+  }
+
+  const product2 = new ProductES6('Ложка', 100);
+
+  console.log(`Название: ${product2.name} \nСтарая цена: ${product2.price} \nНовая цена: ${product2.make25Discount()}`);
+  
   // Здесь пишем решение, данный комментарий необходимо стереть.
 </script>
 </body>
